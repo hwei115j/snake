@@ -49,3 +49,7 @@ int os_keyboard()
     return n;
 }
 
+void os_sleep(int n)
+{
+    Sleep(n);
+}

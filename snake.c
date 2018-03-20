@@ -1,5 +1,4 @@
 #include "sna.h"
-#include <windows.h>
 
 int game_start()
 {
@@ -16,7 +15,7 @@ int game_start()
         while (obj_d->read(obj_d, *(obj_c->food(obj_c, food))) != ' ');
         obj_d->write(obj_d, obj_c->food(obj_c, food), '*');
         obj_d->print(obj_d);
-        Sleep(50);
+        os_sleep(5);
     }
 
     return 0;

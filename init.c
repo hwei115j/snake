@@ -47,7 +47,7 @@ scenes_obj *init_scenes()
 
     obj->food_head = createlist(1);
     setnode(obj->food_head, 0, MAX_X - 5, MAX_Y - 5);
-    obj->wall_head = createlist(MAX_X*2 + MAX_Y*2 - 4);
+    obj->wall_head = createlist(MAX_X*2 + MAX_Y*2);
     obj->food = food_impl;
     obj->wall = wall_impl;
 
@@ -55,13 +55,12 @@ scenes_obj *init_scenes()
     for(i = 0; i < MAX_X; i++)
     {
         setnode(obj->wall_head, j++, i, 0);        
-        setnode(obj->wall_head, j++, MAX_Y - 1, 0);        
+        setnode(obj->wall_head, j++, i, MAX_Y - 1);        
     }
     for(i = 0 ; i < MAX_Y; i++)
     {
         setnode(obj->wall_head, j++, 0, i);        
         setnode(obj->wall_head, j++, MAX_X - 1, i);        
-
     }
 
     return obj;

@@ -2,7 +2,7 @@
 #define DOWN  80
 #define LEFT  75
 #define RIGHT 77
-#define MAX_X 80
+#define MAX_X 50
 #define MAX_Y 20
 
 typedef struct node   node;
@@ -79,3 +79,4 @@ scenes_obj *init_scenes(void);
 //os
 int  os_keyboard(void);
 void os_clean(void);
+void os_sleep(int);
