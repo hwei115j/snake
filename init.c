@@ -9,14 +9,12 @@ snake_obj *init_snake()
     obj->life = 1;
     obj->score = 0;
     
-    obj->body_head = createlist(4);
+    obj->body_head = createlist(3);
     //這裡要是起始座標
     setnode(obj->body_head, 0, MAX_X-2, 17);
     setnode(obj->body_head, 1, MAX_X-2, 18);
     setnode(obj->body_head, 2, MAX_X-2, 19);
-    setnode(obj->body_head, 3, MAX_X-2, 20);
-    obj->dir.x = MAX_X - 2;
-    obj->dir.y = 20;
+
     obj->front = front_impl;
     obj->head = head_impl;
     obj->life_f = life_impl;

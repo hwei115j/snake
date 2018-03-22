@@ -16,12 +16,12 @@ int write_impl(draw_obj *obj, node *list, char ch)
     {
         obj->coor[reg->x][reg->y] = ch;
         reg = reg->next;
-    }while(reg->next != list);
+    }while(reg != list);
 
     return 0;
 }
 
-int print_impl(draw_obj *obj)
+int print_impl(draw_obj *obj, int score)
 {
     int x, y;
 
@@ -32,10 +32,11 @@ int print_impl(draw_obj *obj)
             putchar((char)obj->coor[x][y]);
         putchar('\n');
     }
+    printf("¤À¼Æ:%d\n", score);
 
     for(y = 0; y < MAX_Y; y++)      //coor clean
         for(x = 0; x < MAX_X; x++)
             obj->coor[x][y] = ' ';
-
+    
     return 0;
 }

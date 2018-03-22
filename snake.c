@@ -5,17 +5,17 @@ int game_start()
     snake_obj  *obj_s = init_snake();
     draw_obj   *obj_d = init_draw();
     scenes_obj *obj_c = init_scenes();
+    int food = 0;
 
     while(obj_s->life_f(obj_s, 1))
     {
-        int food = obj_s->mobile(obj_s, obj_d->read(obj_d, obj_s->front(obj_s)));
-
         obj_d->write(obj_d, obj_c->wall(obj_c), '#');
-        obj_d->write(obj_d, obj_s->head(obj_s), '@');
         while (obj_d->read(obj_d, *(obj_c->food(obj_c, food))) != ' ');
         obj_d->write(obj_d, obj_c->food(obj_c, food), '*');
-        obj_d->print(obj_d);
-        os_sleep(5);
+        obj_d->write(obj_d, obj_s->head(obj_s), '@');
+        food = obj_s->mobile(obj_s, obj_d->read(obj_d, obj_s->front(obj_s)));
+        obj_d->print(obj_d, obj_s->score);
+        os_sleep(10);
     }
 
     return 0;
@@ -28,7 +28,8 @@ int mobile_impl(snake_obj *obj, int ch)
     else if(ch == '*')
     {
         addnode(&obj->body_head, obj->dir);
-
+        obj->length++;
+        obj->score++;
         return 0;
     }
     else
