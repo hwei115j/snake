@@ -2,8 +2,8 @@
 #define DOWN  80
 #define LEFT  75
 #define RIGHT 77
-#define MAX_X 80
-#define MAX_Y 28
+#define MAX_X 75
+#define MAX_Y 23
 
 typedef struct node   node;
 typedef struct snake  snake_obj;
@@ -34,7 +34,7 @@ struct draw
 {
     int coor[MAX_X][MAX_Y];
 	int (*read)(draw_obj *, node);
-	int (*write)(draw_obj *, node *, char);
+	int (*write)(draw_obj *, node *, int);
     int (*print)(draw_obj *, int);
 };
 
@@ -64,8 +64,9 @@ node *head_impl(snake_obj *obj);
 
 //draw
 int read_impl(draw_obj *, node);
-int write_impl(draw_obj *, node *, char);
+int write_impl(draw_obj *, node *, int);
 int print_impl(draw_obj *, int);
+void print_xy(int, int, int);
 
 //scenes
 node *food_impl(scenes_obj *, int);
@@ -80,3 +81,4 @@ scenes_obj *init_scenes(void);
 int  os_keyboard(void);
 void os_clean(void);
 void os_sleep(int);
+void gotoxy(int, int);

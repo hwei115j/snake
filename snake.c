@@ -15,7 +15,7 @@ int game_start()
         obj_d->write(obj_d, obj_s->head(obj_s), '@');
         food = obj_s->mobile(obj_s, obj_d->read(obj_d, obj_s->front(obj_s)));
         obj_d->print(obj_d, obj_s->score);
-        os_sleep(10);
+        os_sleep(70);
     }
 
     return 0;

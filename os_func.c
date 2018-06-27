@@ -22,6 +22,15 @@ void os_clean()
     SetConsoleCursorInfo(hout, &cursor_info);
 }
 
+void gotoxy(int xpos, int ypos)
+{
+  COORD scrn;
+  HANDLE hOuput = GetStdHandle(STD_OUTPUT_HANDLE);
+  scrn.X = xpos; scrn.Y = ypos;
+  SetConsoleCursorPosition(hOuput,scrn);
+}
+
+
 int os_keyboard()
 {
     static int n = UP;
